@@ -1,0 +1,158 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;700&display=swap');
+
+p {
+  line-height: 1.6;
+}
+
+header h1 {
+  padding: 0 15px;
+}
+
+br.responsive-min, br.responsive-mid {
+  display: none;
+}
+
+@media (max-width: 800px) { 
+  br.responsive-min {
+    display: inline;
+  }
+
+  div.basic-controls span {
+    text-align: center;
+  }
+
+}
+
+@media (min-width: 801px) and (max-width: 1255px)  { 
+  br.responsive-mid {
+    display: inline;
+  }
+}
+
+.App {
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+}
+
+div.generator-container {
+  background: rgb(108,223,224);
+  background: linear-gradient(130deg, rgba(108,223,224,1) 0%, rgba(120,200,87,1) 100%);
+  padding: 40px 0 50px;
+}
+
+div.generator-container h2 {
+  font-size: 20px;
+  margin: 25px 0 15px;
+}
+div.generator-container h4 {
+  font-size: 16px;
+  margin: 0;
+}
+
+div.user-input-container {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+div.basic-controls {
+  font-size: 40px;
+}
+
+div.basic-controls select {
+  border:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -ms-appearance: none; 
+  background: none;
+  text-decoration: underline;
+  font-size: inherit;
+  margin: 0 10px;
+  padding-left: 20px;
+  cursor: pointer;
+  color: #fff;
+  background: #000000ed;
+}
+
+div.basic-controls select:last-of-type {
+  margin: 0 0px;
+}
+
+div.basic-controls option {
+  font-size: 12px;
+  border-radius: 0;
+}
+
+
+div.basic-controls input {
+  background: none;
+  border: none;
+  font-size: inherit;
+  text-decoration: underline;
+  text-align: center;
+  color: #fff;
+  background: #000000ed;
+  margin: 0 5px;
+  min-width: 50px;
+}
+
+div.basic-controls input[type=text] {
+  width: 8%;
+}
+
+div.command-decoration {
+  background-color: black;
+  display: inline-block;
+  width: 60vw;
+  min-width: 350px;
+  max-width: 800px;
+  margin: 20px auto;
+  color: white;
+}
+
+div.command-decoration:nth-child(2) { /* First box, use better reference */
+  margin-top: 40px;
+}
+
+div.command-decoration img {
+  float: right;
+  margin: 15px;
+}
+
+div.output-container {
+  position: relative;
+  margin: 50px 0px 40px 30px;
+  text-align: left;
+  font-size: 12pt;
+}
+
+.output-command {
+}
+
+.to-clipboard {
+  display: block;
+  position:absolute;                 
+  right: 10px;
+  bottom: -30px;
+}
+
+.to-clipboard-button {
+  all: unset;
+  cursor: pointer;
+}
+
+.copied-tooltip {
+  display: inline-block;
+  background: gray;
+  border: 1px solid black;
+  margin: 0 1px 0 15px;
+  font-size: 14px;
+  padding: 3px;
+  position: absolute;
+}
+
+.info {
+  width: 60vw;
+  margin: 50px auto;
+}
