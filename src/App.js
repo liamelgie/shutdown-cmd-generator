@@ -97,7 +97,7 @@ function App() {
       </div>
       <div className="info">
         <h1>Schedule Shutdowns</h1>
-        <p>Using Window's handy <a href='https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/shutdown'>shutdown.exe</a>, you can schedule your machine to shutdown after a specified amount of time.<br></br>
+        <p>Using Window's handy <a target="_blank" rel="noopener noreferrer" href='https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/shutdown'>shutdown.exe</a>, you can schedule your machine to shutdown after a specified amount of time.<br></br>
         Unfortunately, the amount of time must be provided in seconds. This tool converts your desired length of time into seconds and generates the command for you.</p>
         <h1>What's it useful for?</h1>
         <p>Scheduling shutdowns can be very handy when downloading large files and leaving your PC unattended (i.e. overnight or while at work).</p>
