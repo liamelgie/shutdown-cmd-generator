@@ -75,7 +75,7 @@ function App() {
         updateInputTimeValue={setInputTimeValue}
         />
         <div className="command-decoration">
-          <img alt="" src={windowDecoration}/>
+          <img alt="window decoration icons" src={windowDecoration}/>
           <GeneratedCommandOutput command={constructCommand(secondsUntilShutdown, inputPowerStateChange)}/>
         </div>
         <p>Paste the command in Run (Win + R) and press enter. <br></br>You may see a window flash or nothing at all.</p>
@@ -83,7 +83,7 @@ function App() {
           <h2>Changed your mind?</h2>
           <p>You can cancel a scheduled shutdown with the following:</p>
           <div className="command-decoration">
-            <img alt="" src={windowDecoration}/>
+            <img alt="window decoration icons" src={windowDecoration}/>
             <div className="output-container">
               <span className="output-command"><span style={{userSelect: "none"}}>> </span>shutdown -a</span>
               <div className='to-clipboard'>
