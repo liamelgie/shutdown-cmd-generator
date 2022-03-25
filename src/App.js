@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import './App.css';
 import UserInput from './components/UserInput';
 import GeneratedCommandOutput from "./components/GeneratedCommandOutput";
@@ -7,46 +7,14 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-
-const convertToSeconds = (convertFrom, valueToParse) => {
-  // Convert provided value to seconds
-  switch(convertFrom) {
-    case 'SECONDS':
-      return valueToParse;
-    case 'MINUTES':
-      return valueToParse * 60
-    case 'HOURS':
-      return (valueToParse * 60) * 60
-    case 'DAYS':
-      return ((valueToParse * 24) * 60) * 60
-    default:
-      return 0
-  }
-}
-
-const constructCommand = (timeToTrigger, powerStateChange, options) => {
-  // Convert desired powerstate change to it's respective flag
-  var powerStateFlag = '';
-  switch(powerStateChange) {
-    case 'SHUTDOWN':
-      powerStateFlag = '-s'
-      break;
-    case 'RESTART':
-      powerStateFlag = '-r';
-      break;
-    default:
-      powerStateFlag = '-s';
-      break;
-  }
-
-  return `shutdown ${powerStateFlag} -t ${timeToTrigger}`
-}
+import { convertToSeconds } from "./utils/convertToSeconds";
+import { constructCommand } from "./utils/constructCommand";
 
 function App() {
   const [inputTimeValue, setInputTimeValue] = useState(60);
   const [inputTimeType, setInputTimeType] = useState('SECONDS');
   const [inputPowerStateChange, setInputPowerStateChange] = useState('SHUTDOWN');
-  const secondsUntilShutdown = convertToSeconds(inputTimeType, inputTimeValue);
+  const secondsUntilShutdown = useMemo(() => convertToSeconds(inputTimeType, inputTimeValue), [inputTimeType, inputTimeValue]);
 
   // Repeated in GenerateCommandOutput.js, make DRY?
   const [copied, setCopied] = useState(false)
