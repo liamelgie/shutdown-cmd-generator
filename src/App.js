@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './App.css';
 import UserInput from './components/UserInput';
 import GeneratedCommandOutput from "./components/GeneratedCommandOutput";
@@ -13,19 +13,14 @@ const convertToSeconds = (convertFrom, valueToParse) => {
   switch(convertFrom) {
     case 'SECONDS':
       return valueToParse;
-      break;
     case 'MINUTES':
       return valueToParse * 60
-      break;
     case 'HOURS':
       return (valueToParse * 60) * 60
-      break;
     case 'DAYS':
       return ((valueToParse * 24) * 60) * 60
-      break;
     default:
       return 0
-      break;
   }
 }
 
@@ -68,11 +63,13 @@ function App() {
         <h1>Windows Shutdown <br className="responsive-min"></br>Command Generator</h1>
       </header>
       <div className="generator-container">
-        {/* <h2>Shutdown Command Generator</h2> */}
         <UserInput 
-        updateInputPowerStateType={setInputPowerStateChange} 
-        updateInputTimeType={setInputTimeType} 
-        updateInputTimeValue={setInputTimeValue}
+          timeValue={inputTimeValue}
+          timeType={inputTimeType}
+          powerStateType={inputPowerStateChange}
+          onPowerStateChange={(event) => setInputPowerStateChange(event.target.value)}
+          onTimeValueChange={(event) => setInputTimeValue(event.target.value)}
+          onTimeTypeChange={(event) => setInputTimeType(event.target.value)}
         />
         <div className="command-decoration">
           <img alt="window decoration icons" src={windowDecoration}/>
