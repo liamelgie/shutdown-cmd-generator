@@ -8,7 +8,7 @@ function UserInput({timeValue, timeType, powerStateType, onPowerStateChange, onT
           <option value="RESTART">restart</option>
         </select><br className="responsive-mid"></br>
         <span>in </span>
-        <input type="text" value={timeValue} name="timeValue" onChange={onTimeValueChange}/>
+        <input type="number" value={timeValue} name="timeValue" onChange={onTimeValueChange}/>
         <select className="minimal" name="timeType" onChange={onTimeTypeChange} value={timeType}>
             <option value="SECONDS">seconds</option>
             <option value="MINUTES">minutes</option>
