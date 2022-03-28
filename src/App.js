@@ -9,21 +9,14 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { convertToSeconds } from "./utils/convertToSeconds";
 import { constructCommand } from "./utils/constructCommand";
+import { useCopyToClipboard } from "./hooks/useCopyToClipboard";
 
 function App() {
   const [inputTimeValue, setInputTimeValue] = useState(60);
   const [inputTimeType, setInputTimeType] = useState('SECONDS');
   const [inputPowerStateChange, setInputPowerStateChange] = useState('SHUTDOWN');
   const secondsUntilShutdown = useMemo(() => convertToSeconds(inputTimeType, inputTimeValue), [inputTimeType, inputTimeValue]);
-
-  // Repeated in GenerateCommandOutput.js, make DRY?
-  const [copied, setCopied] = useState(false)
-  const triggerCopyTooltip = () => {
-    setCopied(true)
-    setTimeout(function(){
-      setCopied(false);
-    }, 3000)
-  }
+  const { isCopied, handleCopyToClipboard } = useCopyToClipboard(1000)
 
   return (
     <div className="App">
@@ -50,10 +43,10 @@ function App() {
           <div className="command-decoration">
             <img alt="window decoration icons" src={windowDecoration}/>
             <div className="output-container">
-              <span className="output-command"><span style={{userSelect: "none"}}>> </span>shutdown -a</span>
+              <span className="output-command"><span style={{userSelect: "none"}}>&gt; </span>shutdown -a</span>
               <div className='to-clipboard'>
-              <CopyToClipboard text={"shutdown -a"} onCopy={triggerCopyTooltip}>
-                {copied ? <button type="button" aria-label="copy successful" className='to-clipboard-button'><FontAwesomeIcon icon={faCheck} /></button> : <button type="button" aria-label="copy command to clipboard" className='to-clipboard-button'><FontAwesomeIcon icon={faCopy} /></button>}
+              <CopyToClipboard text={"shutdown -a"} onCopy={handleCopyToClipboard}>
+                {isCopied ? <button type="button" style={{color: "aquamarine"}} aria-label="copy successful" className='to-clipboard-button'><FontAwesomeIcon icon={faCheck} /></button> : <button type="button" aria-label="copy command to clipboard" className='to-clipboard-button'><FontAwesomeIcon icon={faCopy} /></button>}
               </CopyToClipboard>
               </div>
             </div>
